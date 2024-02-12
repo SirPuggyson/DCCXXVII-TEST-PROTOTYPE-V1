@@ -1,0 +1,34 @@
+
+* {
+    box-sizing: border-box;
+}
+
+.generator {
+    border: 2px solid darkmagenta;
+    background-color: lavender;
+    color: rgb(32, 148, 109);
+    text-align: center;
+    width: 300px;
+    padding: 15px;
+    font-size: 1.3em;
+    cursor: pointer;
+    user-select: none;
+}
+
+.generator.locked {
+    background-color: rgb(255, 215, 215);
+    color: rgb(173, 0, 0);
+}
+
+.generators-container {
+    display: flex;
+    width: 600px;
+    flex-wrap: wrap;
+    margin: auto;
+}
+
+#currency {
+    margin: 40px;
+    font-size: 3em;
+    text-align: center;
+}
