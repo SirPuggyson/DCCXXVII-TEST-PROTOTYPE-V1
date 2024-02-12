@@ -3,7 +3,7 @@
     box-sizing: border-box;
 }
 
-.generator {
+.deity {
     border: 2px solid darkmagenta;
     background-color: lavender;
     color: rgb(32, 148, 109);
@@ -15,12 +15,12 @@
     user-select: none;
 }
 
-.generator.locked {
+.deity.locked {
     background-color: rgb(255, 215, 215);
     color: rgb(173, 0, 0);
 }
 
-.generators-container {
+.deitys-container {
     display: flex;
     width: 600px;
     flex-wrap: wrap;
