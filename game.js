@@ -1,15 +1,15 @@
-var deificity = 10
-var deities = []
+var money = 10
+var generators = []
 var lastUpdate = Date.now()
 
 for (let i = 0; i < 10; i++) {
-    let deity = {
+    let generator = {
         cost: Math.pow(Math.pow(10, i), i) * 10,
         bought: 0,
         amount: 0,
         mult: 1
     }
-    deities.push(deity)
+    generators.push(generator)
 }
 
 function format(amount) {
@@ -19,10 +19,10 @@ function format(amount) {
     return mantissa.toFixed(2) + "e" + power
 }
 
-function buydeity(i) {
-    let g = deities[i - 1]
-    if (g.cost > deificity) return
-    deificity -= g.cost
+function buyGenerator(i) {
+    let g = generators[i - 1]
+    if (g.cost > money) return
+    money -= g.cost
     g.amount += 1.35
     g.amount *= 1.09
     g.bought += 1
@@ -31,19 +31,19 @@ function buydeity(i) {
 }
 
 function updateGUI() {
-    document.getElementById("currency").textContent = "You have $" + format(deificity)
+    document.getElementById("currency").textContent = "You have $" + format(money)
     for (let i = 0; i < 10; i++) {
-        let g = deities[i]
+        let g = generators[i]
         document.getElementById("gen" + (i + 1)).innerHTML = "Amount: " + format(g.amount) + "<br>Bought: " + g.bought + "<br>Mult: " + format(g.mult) + "x<br>Cost: " + format(g.cost)
-        if (g.cost > deificity) document.getElementById("gen" + (i + 1)).classList.add("locked")
+        if (g.cost > money) document.getElementById("gen" + (i + 1)).classList.add("locked")
         else document.getElementById("gen" + (i + 1)).classList.remove("locked")
     }
 }
 
 function productionLoop(diff) {
-    deificity += deities[0].amount * deities[0].mult * diff
+    money += generators[0].amount * generators[0].mult * diff
     for (let i = 1; i < 10; i++) {
-        deities[i - 1].amount += deities[i].amount * deities[i].mult * diff / 5
+        generators[i - 1].amount += generators[i].amount * generators[i].mult * diff / 5
     }
 }
 
