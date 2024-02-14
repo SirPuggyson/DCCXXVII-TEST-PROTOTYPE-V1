@@ -1,7 +1,6 @@
-let money = 10
-let generators = []
-let lastUpdate = Date.now()
-let tickspeeds = []
+var money = 10
+var generators = []
+var lastUpdate = Date.now()
 
 for (let i = 0; i < 10; i++) {
     let generator = {
@@ -11,16 +10,6 @@ for (let i = 0; i < 10; i++) {
         mult: 1
     }
     generators.push(generator)
-}
-
-for (let i = 0; i < 10; i++) {
-    let tickspeed = {
-        cost: 10^3,
-        bought: 0,
-        amount: 0,
-        mult: 1
-    }
-    tickspeeds.push(tickspeed)
 }
 
 function format(amount) {
@@ -34,24 +23,12 @@ function buyGenerator(i) {
     let g = generators[i - 1]
     if (g.cost > money) return
     money -= g.cost
-    g.amount += 1
+    g.amount += 1.35
+    g.amount *= 1.09
     g.bought += 1
-    g.mult *= 2
-    g.cost *= (10 ^ i)
+    g.mult *= 0.975
+    g.cost *= 1.65
 }
-
-function buyTickspeed(i) {
-    let t = tickspeeds[i - 1]
-    if (t.cost > money) return
-    money -= t.cost
-    t.amount += 1
-    t.bought += 1
-    t.mult *= 1.125
-    t.cost *= 10;
-    }
-}
-
-
 
 function updateGUI() {
     document.getElementById("currency").textContent = "You have $" + format(money)
