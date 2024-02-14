@@ -57,7 +57,7 @@ function updateGUI() {
         document.getElementById("gen" + (i + 1)).innerHTML = "Amount: " + format(g.amount) + "<br>Bought: " + g.bought + "<br>Mult: " + format(g.mult) + "x<br>Cost: " + format(g.cost)
         if (g.cost > money) document.getElementById("gen" + (i + 1)).classList.add("locked")
         else document.getElementById("gen" + (i + 1)).classList.remove("locked")
-    }
+    },
     for (let i = 0; i < 10; i++) {
         let t = tickspeeds[i]
         document.getElementById("tick" + (i + 1)).innerHTML = "Amount: " + format(t.amount) + "<br>Bought: " + t.bought + "<br>Mult: " + format(t.mult) + "x<br>Cost: " + format(t.cost)
@@ -70,12 +70,12 @@ function productionLoop(diff) {
     money += generators[0].amount * generators[0].mult * diff
     for (let i = 1; i < 10; i++) {
         generators[i - 1].amount += generators[i].amount * generators[i].mult * diff / 5
-    }
+    },
     generators[i].mult *= tickspeeds[i].mult * diff
 }
 
 function mainLoop() {
-    let diff = (Date.now() - lastUpdate) / 1000
+    var diff = (Date.now() - lastUpdate) / 1000
 
     productionLoop(diff)
     updateGUI()
