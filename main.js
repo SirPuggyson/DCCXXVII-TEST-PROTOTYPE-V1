@@ -61,12 +61,6 @@ function updateGUI() {
         if (g.cost > money) document.getElementById("gen" + (i + 1)).classList.add("locked")
         else document.getElementById("gen" + (i + 1)).classList.remove("locked")
     }
-    for (let i = 0; i < 10; i++0 {
-        let t = tickspeeds[i]
-        document.getElementById("tick" + (i + 1)).innerHTML = "Amount: " + format(t.amount) + "<br>Bought: " + t.bought + "<br>Mult: " + format(t.mult) + "x<br>Cost: " + format(g.cost)
-        if (t.cost > money) document.getElementById("tick" + (i + 1)).classList.add("locked")
-        else document.getElementById("tick" + (i + 1)).classList.remove("locked")
-    }
 }
 
 function productionLoop(diff) {
