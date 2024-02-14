@@ -1,5 +1,6 @@
 let money = 10
 let generators = []
+let tickspeeds = []
 let lastUpdate = Date.now()
 
 for (let i = 0; i < 10; i++) {
@@ -10,6 +11,16 @@ for (let i = 0; i < 10; i++) {
         mult: 1
     }
     generators.push(generator)
+}
+
+for (let i = 0; i < 10; i++) {
+    let tickspeed = {
+        cost: Math.pow(Math.pow(10, i), i) * 1000,
+        bought: 0,
+        amount: 0,
+        mult: 1
+    }
+    tickspeeds.push(tickspeed)
 }
 
 function format(amount) {
@@ -29,6 +40,16 @@ function buyGenerator(i) {
     g.cost *= ((i + 1) * 10)
 }
 
+function buyTickspeed(i) {
+    let t = tickspeeds[i - 1]
+    if (t.cost > money) return
+    money -= t.cost
+    t.amount += 1
+    t.bought += 1
+    t.mult *= 1.125
+    t.cost *= 10
+}
+
 function updateGUI() {
     document.getElementById("currency").textContent = "You have $" + format(money)
     for (let i = 0; i < 10; i++) {
@@ -37,6 +58,12 @@ function updateGUI() {
         if (g.cost > money) document.getElementById("gen" + (i + 1)).classList.add("locked")
         else document.getElementById("gen" + (i + 1)).classList.remove("locked")
     }
+    for (let i = 0; i < 10; i++) {
+        let t = tickspeeds[i]
+        document.getElementById("tick" + (i + 1)).innerHTML = "Amount: " + format(t.amount) + "<br>Bought: " + t.bought + "<br>Mult: " + format(t.mult) + "x<br>Cost: " + format(t.cost)
+        if (t.cost > money) document.getElementById("tick" + (i + 1)).classList.add("locked")
+        else document.getElementById("tick" + (i + 1)).classList.remove("locked")
+    }
 }
 
 function productionLoop(diff) {
@@ -44,10 +71,11 @@ function productionLoop(diff) {
     for (let i = 1; i < 10; i++) {
         generators[i - 1].amount += generators[i].amount * generators[i].mult * diff / 5
     }
+    generators[i].mult *= tickspeeds[i].mult * diff
 }
 
 function mainLoop() {
-    var diff = (Date.now() - lastUpdate) / 1000
+    let diff = (Date.now() - lastUpdate) / 1000
 
     productionLoop(diff)
     updateGUI()
