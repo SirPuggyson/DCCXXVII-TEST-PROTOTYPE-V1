@@ -27,6 +27,30 @@
     margin: auto;
 }
 
+.tickspeed {
+    border: 2px solid darkmagenta;
+    background-color: rbg(171, 252, 255);
+    color: rgb(254, 255, 171);
+    text-align: center;
+    width: 300px;
+    padding: 15px;
+    font-size: 1.2em;
+    cursor: pointer;
+    user-select: none;
+}
+
+.tickspeed.locked {
+    background-color: rbg(215, 255, 215);
+    color: rbg(0, 173, 0);
+}
+
+.tickspeeds-container {
+    display: flex;
+    width: 600px;
+    flex-wrap: wrap;
+    margin: auto;
+}
+
 #currency {
     margin: 40px;
     font-size: 3em;
