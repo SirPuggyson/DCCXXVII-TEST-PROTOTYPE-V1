@@ -29,8 +29,8 @@
 
 .tickspeed {
     border: 2px solid darkmagenta;
-    background-color: rbg(171, 252, 255);
-    color: rgb(254, 255, 171);
+    background-color: rbg(171, 255, 171);
+    color: rgb(200, 100, 200);
     text-align: center;
     width: 300px;
     padding: 15px;
