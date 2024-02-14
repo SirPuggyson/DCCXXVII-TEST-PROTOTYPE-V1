@@ -13,6 +13,16 @@ for (let i = 0; i < 10; i++) {
     generators.push(generator)
 }
 
+for (let i = 0; i < 10; i++) {
+    let tickspeed = {
+        cost: 10^3,
+        bought: 0,
+        amount: 0,
+        mult: 1
+    }
+    tickspeeds.push(tickspeed)
+}
+
 function format(amount) {
     let power = Math.floor(Math.log10(amount))
     let mantissa = amount / Math.pow(10, power)
@@ -27,19 +37,17 @@ function buyGenerator(i) {
     g.amount += 1
     g.bought += 1
     g.mult *= 2
-    g.cost *= ((i + 1) * 10)
+    g.cost *= (10 ^ i)
 }
 
 function buyTickspeed(i) {
-    let t = tickspeed[i - 1]
+    let t = tickspeeds[i - 1]
     if (t.cost > money) return
     money -= t.cost
     t.amount += 1
     t.bought += 1
     t.mult *= 1.125
     t.cost *= 10;
-    if tickspeed (>= 1) {
-        g.mult *= t.mult;
     }
 }
 
@@ -52,6 +60,12 @@ function updateGUI() {
         document.getElementById("gen" + (i + 1)).innerHTML = "Amount: " + format(g.amount) + "<br>Bought: " + g.bought + "<br>Mult: " + format(g.mult) + "x<br>Cost: " + format(g.cost)
         if (g.cost > money) document.getElementById("gen" + (i + 1)).classList.add("locked")
         else document.getElementById("gen" + (i + 1)).classList.remove("locked")
+    }
+    for (let i = 0; i < 10; i++0 {
+        let t = tickspeeds[i]
+        document.getElementById("tick" + (i + 1)).innerHTML = "Amount: " + format(t.amount) + "<br>Bought: " + t.bought + "<br>Mult: " + format(t.mult) + "x<br>Cost: " + format(g.cost)
+        if (t.cost > money) document.getElementById("tick" + (i + 1)).classList.add("locked")
+        else document.getElementById("tick" + (i + 1)).classList.remove("locked")
     }
 }
 
