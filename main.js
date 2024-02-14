@@ -23,11 +23,10 @@ function buyGenerator(i) {
     let g = generators[i - 1]
     if (g.cost > money) return
     money -= g.cost
-    g.amount += 1.35
-    g.amount *= 1.09
+    g.amount += 1
     g.bought += 1
-    g.mult *= 0.975
-    g.cost *= 1.65
+    g.mult *= 2
+    g.cost *= ((i + 1) * 10)
 }
 
 function updateGUI() {
