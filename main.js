@@ -1,6 +1,6 @@
-var money = 10
-var generators = []
-var lastUpdate = Date.now()
+let money = 10
+let generators = []
+let lastUpdate = Date.now()
 
 for (let i = 0; i < 10; i++) {
     let generator = {
