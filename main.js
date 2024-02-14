@@ -27,7 +27,7 @@ function buyGenerator(i) {
     g.amount *= 1.09
     g.bought += 1
     g.mult *= 2
-    g.cost *= 1.65
+    g.cost *= 4
 }
 
 function updateGUI() {
