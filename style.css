@@ -15,6 +15,23 @@
     user-select: none;
 }
 
+.tickspeed {
+    border: 2px solid magenta;
+    background-color: cyan;
+    color: rgb(100, 255, 100);
+    text-align: center;
+    width: 200px;
+    padding: 10px;
+    font-size: 1em;
+    cursor: pointer;
+    user-select: none;
+}
+
+.tickspeed.locked {
+    background-color: rgb(0, 255, 0);
+    color: rgb(173, 255, 14);
+}
+
 .generator.locked {
     background-color: rgb(255, 215, 215);
     color: rgb(173, 0, 0);
